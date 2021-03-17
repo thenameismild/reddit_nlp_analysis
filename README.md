@@ -30,6 +30,41 @@ The HIMYM data and The Big Bang Theory data were join to a dataframe where it co
 
 The data was cleaned by removing url links and non letter words first. Then split the sentence into individual words and tolkenized it. After they were classified to stopwords and removed those and lematized them. Finally they are joined back into a string of words.
 
+# The Model
+In the project 3 models were used: Logistic Regression, KNN and Naive Bayes:
+
+The logistic regression model with the highest training accuracy score does appear to be somewhat overfit, inferring training data with 83% accuracy while only predicting test data with 80% accuracy. The best parameter to used were:
+- CountVectorizer
+- Logistic Regression
+    - 'C': 0.5689866029018293
+    - 'penalty': 'l2'
+    - 'solver': 'newton-cg'}
+
+The KNN regression predicting the data with 75% accuracy. The best parameter to used were:
+- CountVectorizer
+- Logistic Regression
+    - 'metric': 'euclidean'
+    - 'n_neighbors': 1
+    - 'weights': 'uniform'
+
+The naive bayes regression model predicting test data with 85% accuracy.
+- CountVectorizer
+- Logistic Regression
+    - 'alpha': 0.7
+    - 'fit_prior': True
+
+# Evaluation
+Overall, the best model producted is the Naive Bayes estimator at alpha equals to 0.7, fit_prior is True with deafult Count Vectorizer. From looking at the confusion matrix we can say that our best model can:
+
+- Our model predict 86% of the observations
+- Among the posts that the model predicted 83% were correctly classified as HIMYM posts
+- Among the posts that are in HIMYM, the model has 88% correctly classified
+- Among the posts that are in The Big Bang Theory, the model has 83% correctly classified 
+
+Through more evaluation we were able to identify the key words for each of the subreddit, which consisted mainly of character names and location names.
+
+When looking deeper we were able to identify words that are present to not lean one way or the othere where their eval score is closer to 0 from the log probability evaluation. These words listed in himym_wrong and bbt_wrong can be removed through the cleaning process aswell for a better prediction result.
+
 # Recommendation
 From our findings the recommended words for users to search and learn more about the show on reddit or search engines would be specific chracter names, catchphrase or location names:
 
